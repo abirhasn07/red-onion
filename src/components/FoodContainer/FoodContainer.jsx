@@ -17,8 +17,8 @@ const FoodContainer = () => {
 								<p className="food-categories">{item.categories}</p>
 								<h4 className="food-name">{item.name}</h4>
 							</div>
-							<Link to={`${id}`} style={{width:"100%"}} >
-							<img src={`../${item.img}`} alt="" />
+							<Link to={`${id}`} style={{ width: '100%' }}>
+								<img src={`${item.img}`} alt="" />
 							</Link>
 							<div className="food-cart">
 								<p className="food-price">{formatCurrency(item.price)}</p>

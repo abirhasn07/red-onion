@@ -3,7 +3,7 @@ import InputControl from '../components/InputControl/InputControl';
 import { Link, useLocation } from 'react-router-dom';
 import { useFoodCartContext } from '../context/RedOnionContext';
 import Header from '../components/Header/Header';
-import { toast } from 'react-toastify';
+
 const Login = () => {
 	const { contextValue } = useFoodCartContext();
 	const {

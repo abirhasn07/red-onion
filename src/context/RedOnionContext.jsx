@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { data } from '../database/data';
-import { toast } from 'react-toastify';
+
 import {
 	createUserWithEmailAndPassword,
 	onAuthStateChanged,
@@ -22,6 +22,20 @@ export function FoodCartProvider({ children }) {
 	const [foodData, setFoodData] = useState([]);
 	const [foodCategories, setFoodCategories] = useState([]);
 
+	// SEARCH FOODS
+	const [query, setQuery] = useState('');
+
+	function onSubmitData(e) {
+		e.preventDefault();
+	}
+
+	const filterFood = data.filter((item) => {
+		// return item.name?.toLowerCase().includes(query.toLowerCase());
+		console.log(item.name);
+	});
+	console.log(filterFood);
+	// SEARCH FOODS
+	console.log(query);
 	// filter food function
 
 	const filterItem = (catItem) => {
@@ -36,16 +50,16 @@ export function FoodCartProvider({ children }) {
 		setFoodData(data[0]);
 		setFoodCategories([...new Set(data[0].map((item) => item.categories))]);
 	}, []);
-	// get data from localStorage 
+	// get data from localStorage
 	const getDataFormLocalStorage = () => {
-		let list = localStorage.getItem("oder-list")
+		let list = localStorage.getItem('oder-list');
 		if (list) {
-			return JSON.parse(localStorage.getItem("oder-list"))
+			return JSON.parse(localStorage.getItem('oder-list'));
 		} else {
-			return []
+			return [];
 		}
-	}
-	// get data from localStorage 
+	};
+	// get data from localStorage
 
 	// add to cart function
 	const [cartItem, setCartItem] = useState(getDataFormLocalStorage());
@@ -57,12 +71,10 @@ export function FoodCartProvider({ children }) {
 		setCartItem((currItem) => {
 			// console.log(currItem);
 			if (currItem.find((item) => item.id === id) == null) {
-				toast.success("New Product Added",{position:"top-right"})
 				return [...currItem, { id, quantity: 1 }];
 			} else {
 				return currItem.map((item) => {
 					if (item.id === id) {
-						toast.success("Product Added",{position:"top-right"})
 						return { ...item, quantity: item.quantity + 1 };
 					} else {
 						return item;
@@ -102,12 +114,11 @@ export function FoodCartProvider({ children }) {
 		(quantity, item) => item.quantity + quantity,
 		0,
 	);
-	const total = cartItem.reduce((total,item)=>{
-		const product=data[0].find(i=>i.id===item.id)
-		return total+ (product?.price||0)*item.quantity
-	}, 0)
-	const tax=Math.round(total*.15)
-	
+	const total = cartItem.reduce((total, item) => {
+		const product = data[0].find((i) => i.id === item.id);
+		return total + (product?.price || 0) * item.quantity;
+	}, 0);
+	const tax = Math.round(total * 0.15);
 
 	// add to cart function
 
@@ -154,8 +165,8 @@ export function FoodCartProvider({ children }) {
 		password: '',
 	});
 	const handleSubmissionLogin = () => {
-		setErrorMassage("")
-		console.log("btn working");
+		setErrorMassage('');
+		// console.log("btn working");
 		if (!loginValues.email || !loginValues.password) {
 			setErrorMassage('Please Fill All The Field Correctly**');
 			return;
@@ -164,16 +175,16 @@ export function FoodCartProvider({ children }) {
 		console.log(loginValues);
 		setSubmitBtnDisable(true);
 		signInWithEmailAndPassword(auth, loginValues.email, loginValues.password)
-		.then(async (res) => {
-			setSubmitBtnDisable(false);
-			const user = res.user;
-			navigate('/');
-		})
-		.catch((err) => {
-			setSubmitBtnDisable(false);
-			setErrorMassage(err.message);
-			console.log(err.message);
-		});
+			.then(async (res) => {
+				setSubmitBtnDisable(false);
+				const user = res.user;
+				navigate('/');
+			})
+			.catch((err) => {
+				setSubmitBtnDisable(false);
+				setErrorMassage(err.message);
+				console.log(err.message);
+			});
 	};
 
 	const handleLogout = () => {
@@ -198,15 +209,12 @@ export function FoodCartProvider({ children }) {
 	// firebase authentication
 	// console.log(loginValues);
 
-	// local storage 
-
-	
-	useEffect(() => {
-		localStorage.setItem("oder-list",JSON.stringify(cartItem))
-	},[cartItem])
 	// local storage
 
-	
+	useEffect(() => {
+		localStorage.setItem('oder-list', JSON.stringify(cartItem));
+	}, [cartItem]);
+	// local storage
 
 	const contextValue = {
 		foodData,
@@ -231,7 +239,9 @@ export function FoodCartProvider({ children }) {
 		handleLogout,
 		total,
 		tax,
-	
+		query,
+		setQuery,
+		onSubmitData,
 	};
 	return (
 		<FoodCartContext.Provider value={{ contextValue }}>
