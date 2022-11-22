@@ -1,10 +1,10 @@
 import React from 'react'
-import logo from '../../assets/images/logo2.png'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { FaUserCircle } from 'react-icons/fa'
-import './Header.css'
+import { Link } from 'react-router-dom'
+import logo from '../../assets/images/logo2.png'
 import { useFoodCartContext } from '../../context/RedOnionContext'
-import {Link} from 'react-router-dom'
+import './Header.css'
 const Header = ({path}) => {
     const { contextValue} = useFoodCartContext();
     const { cartQuantity, userName, handleLogout } = contextValue
@@ -18,7 +18,7 @@ const Header = ({path}) => {
 				</Link>
 				<nav>
 					<Link to={'/cart'} className="cart-icon">
-						<AiOutlineShoppingCart size={'1.2rem'} color="#000" />
+						<AiOutlineShoppingCart size={'1.8rem'} color="#000" />
 						<span className="cart-value">{cartQuantity}</span>
 					</Link>
 
@@ -36,7 +36,7 @@ const Header = ({path}) => {
 								{!path ? (
 									<Link to={'/login'} className="">
 										<FaUserCircle
-											size={'1.5rem'}
+											size={'1.8rem'}
 											style={{ color: '#F91944' }}
 										/>
 									</Link>

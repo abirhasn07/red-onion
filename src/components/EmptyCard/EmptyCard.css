@@ -1,55 +1,53 @@
-.empty-card{
-
+.empty-card {
 }
 
-.empty-card>.container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 5rem;
-    
+.empty-card > .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5rem;
 }
-.empty-cart-icon{
-    color: var(--clr-secondary);
-}
-
-.empty-cart-content{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2em;
-    margin-top: 1em;
-}
-.empty-cart-title{
-    font-size: var(--fs-500);
-    text-transform: capitalize;
-    text-align: center;
-    width: 60%;
-    margin-inline: auto;
-    font-weight: bold;
-}
-.empty-cart-btn{
-    min-width: 200px;
-    background-color: var(--clr-secondary);
-    border: 1px solid var(--clr-secondary);
-    color: var(--clr-white);
-    font-size: var(--fs-400);
-    padding: .3rem 1.5rem;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-   
+.empty-cart-icon {
+  color: var(--clr-secondary);
 }
 
-@media (max-width:600px) {
-    .empty-card{
-        padding-bottom: 1em;
-    }
-    .empty-cart-title{
-        width: 90%;
-    }
+.empty-cart-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  margin-top: 1em;
+}
+.empty-cart-title {
+  font-size: var(--fs-500);
+  text-transform: capitalize;
+  text-align: center;
+  width: 60%;
+  margin-inline: auto;
+  font-weight: bold;
+}
+.empty-cart-btn {
+  min-width: 200px;
+  background-color: var(--clr-secondary);
+  border: 1px solid var(--clr-secondary);
+  color: var(--clr-white);
+  font-size: var(--fs-400);
+  padding: 0.3rem 1.5rem;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .empty-card {
+    padding-bottom: 1em;
+  }
+  .empty-cart-title {
+    width: 90%;
+  }
 }

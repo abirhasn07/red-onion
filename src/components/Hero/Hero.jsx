@@ -9,9 +9,10 @@ const Hero = () => {
 	return (
 		<section className="hero">
 			<img
-				src="https://ik.imagekit.io/abirhasan/tr:w-1200/bannerbackground_gV2WJIBvf.png?ik-sdk-version=javascript-1.4.3&updatedAt=1666118551909"
+				src="https://ik.imagekit.io/abirhasan/tr:w-1920/bannerbackground_gV2WJIBvf.png?ik-sdk-version=javascript-1.4.3&updatedAt=1666118551909"
 				alt=""
 				className="banner"
+				width={"100vw"}
 			/>
 			<div className="banner-info">
 				<h1>Eat & Enjoy The true test</h1>
